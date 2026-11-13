@@ -1,0 +1,42 @@
+name: mfti-vacancy-navigator
+services:
+  app:
+    build: .
+    image: mfti-vacancy-navigator:local
+    ports:
+      - "127.0.0.1:${APP_PORT:-8080}:8000"
+    volumes:
+      - ./models:/models:ro
+      - workspace:/data
+    environment:
+      BROWSER_WORKSPACE: ${BROWSER_WORKSPACE:-1}
+      SPEECH_MODEL_DIR: /models/speech
+      MODEL_THREADS: ${MODEL_THREADS:-4}
+      LLM_MAX_ROWS: ${LLM_MAX_ROWS:-6}
+      MODEL_TIMEOUT: ${MODEL_TIMEOUT:-180}
+      PORTAL_LLM_ROWS: ${PORTAL_LLM_ROWS:-2}
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    stop_grace_period: 10s
+  setup-model:
+    image: mfti-vacancy-navigator:local
+    build: .
+    profiles: [setup]
+    user: "0:0"
+    volumes:
+      - ./models:/models
+    command: ["python", "scripts/download_model.py", "--directory", "/models"]
+  setup-speech:
+    image: mfti-vacancy-navigator:local
+    build: .
+    profiles: [setup]
+    user: "0:0"
+    volumes:
+      - ./models:/models
+    command: ["python", "scripts/download_speech_models.py", "--directory", "/models/speech"]
+
+volumes:
+  workspace:

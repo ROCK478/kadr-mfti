@@ -1,0 +1,100 @@
+/* The assistant is a single working surface with one context rail. */
+body.assistant-page{overflow:hidden}
+.assistant-page .app-main{height:100dvh;display:flex;flex-direction:column;min-height:0}
+.assistant-page .topbar{height:62px;flex-shrink:0;padding-top:0;padding-bottom:0}
+.assistant-page #task-strip,.assistant-page #global-notice{flex-shrink:0}
+.assistant-page #page-content{padding:0;max-width:none;margin:0;flex:1;min-height:0;width:100%}
+.assistant-page .assistant-layout{height:100%;min-height:0;display:grid;grid-template-columns:235px minmax(0,1fr);gap:0}
+.assistant-page .assistant-side{display:block;height:100%;min-height:0;overflow:auto;border:0;border-right:1px solid #dbe4eb;border-radius:0;padding:26px 20px;background:#f3f6f9}
+.assistant-page .assistant-side h2{font-size:17px}
+.assistant-page .assistant-side label{margin-top:22px}
+.assistant-page .assistant-prompts{margin-top:25px}
+.clear-context-side{margin-top:12px}
+.assistant-page .chat-main{height:100%;min-height:0;border:0;border-radius:0;background:#fff}
+.assistant-page .chat-titlebar{padding:16px 26px;min-height:76px;flex-shrink:0}
+.assistant-page .chat-titlebar>div{min-width:0}
+.assistant-page .chat-titlebar h3{white-space:normal;max-width:none}
+.assistant-page .chat-titlebar .assistant-emblem{width:36px;height:36px}
+.assistant-page .chat-messages{padding:25px 30px;overscroll-behavior:contain}
+.assistant-page .chat-message.assistant{max-width:100%}
+.assistant-page .chat-compose{padding:18px 26px 23px;flex-shrink:0}
+.assistant-page .chat-compose-box{min-height:78px}
+.speech-controls[hidden]{display:none!important}
+.chat-model-error{color:#875126;font-size:12px}
+
+/* Every flex parent must be constrained for the inner dossier to scroll. */
+body:has(dialog[open]){overflow:hidden}
+.candidate-dialog[open]{display:flex;flex-direction:column;height:89dvh;max-height:min(900px,calc(100dvh - 40px));overflow:hidden}
+#candidate-content{height:100%;min-height:0;flex:1;overflow:hidden}
+.candidate-content-shell{height:100%;min-height:0;overflow:hidden}
+.candidate-modal-scroll{overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;min-height:0;flex:1}
+
+.vacancy-card-wrap{position:relative;min-width:0;display:flex}
+.vacancy-card-wrap .vacancy-card{width:100%;height:100%}
+.vacancy-card-wrap .open-label{margin-right:22px}
+.document-delete{position:absolute;right:10px;top:10px;color:#60707c;background:#fff;z-index:1}
+.document-delete:hover{color:#9b3343;background:#f8e9ec}
+.ranked-candidates{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.pool-row{position:relative;min-width:0}
+.pool-row .pool-card{display:grid;grid-template-columns:35px 48px minmax(0,1fr) 145px 20px;align-items:center;gap:17px;width:100%;border-radius:12px;text-align:left;min-height:132px;padding:24px 58px 24px 23px}
+.pool-row .pool-card>.avatar{width:46px;height:46px;border-radius:13px;font-size:16px}
+.pool-rank{font-size:17px;font-weight:550;color:#6a7a87;font-variant-numeric:tabular-nums}
+.pool-row:first-child .pool-rank{color:#285a64}
+.pool-row .pool-body h3{font-size:16px;margin-bottom:6px}
+.pool-row .pool-body p{font-size:12px;line-height:1.6}
+.pool-row .pool-best{display:block;margin-top:10px;padding:0;border:0;background:none}
+.pool-row .pool-best strong{font-size:13px;line-height:1.5;color:#315b70;font-weight:500}
+.pool-score{text-align:right;display:flex;flex-direction:column;gap:7px}
+.pool-score>strong{font-size:29px;font-weight:600;color:#243d4c;line-height:1.2;font-variant-numeric:tabular-nums}
+.pool-score small{font-size:12px;font-weight:400;color:#60717f;margin-left:4px}
+.pool-score>span{font-size:10px;color:#5a6e7c}
+.pool-row .document-delete{top:calc(50% - 17px);right:11px}
+.pool-row .pool-card>.icon{color:#4c7085;width:17px}
+.interview-list{padding:0;list-style:none;counter-reset:interview;display:flex;flex-direction:column;gap:18px;margin:22px 0 30px}
+.interview-list>li{counter-increment:interview;position:relative;padding:0 0 20px 36px;border-bottom:1px solid #e0e6eb}
+.interview-list>li::before{content:counter(interview,decimal-leading-zero);position:absolute;left:0;top:1px;color:#6d7d88;font-size:12px}
+.interview-list h4{font-size:14px;font-weight:500;line-height:1.8;color:#293f4e;margin-bottom:10px}
+.interview-list summary{font-size:12px;color:#315d73;cursor:pointer}
+.interview-list details p{font-size:13px;line-height:1.75;margin:10px 0;color:#526a79}
+.delete-dialog{width:min(490px,calc(100% - 32px));padding:27px;border:0;border-radius:14px}
+.delete-dialog h2{font-size:22px}.delete-dialog #delete-name{font-size:15px;color:#263b49;line-height:1.7;margin-top:20px;overflow-wrap:anywhere}
+.delete-hint{font-size:12px;color:#647480;margin-top:9px}
+.delete-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:25px}
+.button.danger{color:#fff;background:#973547}.button.danger:hover{background:#7d2838}
+.deleted-list{list-style:none;padding:0;margin:22px 0;display:flex;flex-direction:column;gap:15px}
+.deleted-list li{display:flex;align-items:center;gap:15px;justify-content:space-between;padding-bottom:15px;border-bottom:1px solid #e0e7ec}
+.deleted-list li>span{min-width:0}.deleted-list strong{font-size:14px;line-height:1.7;display:block;overflow-wrap:anywhere}
+.deleted-list small{font-size:11px;color:#637887}.deleted-list .button{font-size:11px;padding:8px 11px;min-height:36px}
+@media(min-width:1500px){.assistant-page .assistant-layout{grid-template-columns:255px minmax(0,1fr)}}
+@media(max-width:950px){.assistant-page .assistant-layout{grid-template-columns:210px minmax(0,1fr)}.pool-row .pool-card{grid-template-columns:27px 40px minmax(0,1fr) 100px;gap:13px;padding-left:17px}.pool-row .pool-card>.icon{display:none}.pool-row .pool-card>.avatar{width:40px;height:40px}.pool-score>strong{font-size:25px}}
+@media(max-width:680px){
+ .assistant-page .topbar{height:56px}.assistant-page .assistant-layout{display:flex;flex-direction:column}
+ .assistant-page .assistant-side{height:auto;max-height:132px;flex-shrink:0;padding:11px 16px;display:grid;grid-template-columns:104px minmax(0,1fr);gap:7px 10px;border-right:0;border-bottom:1px solid #dbe4eb}
+ .assistant-page .assistant-side h2,.assistant-page .assistant-prompts,.assistant-page .clear-context-side{display:none}
+ .assistant-page .assistant-side label{margin:0;align-self:center;font-size:11px}.assistant-page .assistant-side select{font-size:11px;min-height:35px;padding:6px 8px}
+ .assistant-page .chat-main{flex:1;min-height:0}.assistant-page .chat-titlebar{padding:12px 17px;min-height:62px}.assistant-page .chat-titlebar p{display:none}
+ .assistant-page .chat-messages{padding:19px 17px}.assistant-page .chat-compose{padding:12px 15px 16px}
+ .candidate-dialog[open]{height:100dvh;max-height:100dvh}
+ .pool-row .pool-card{grid-template-columns:25px 36px minmax(0,1fr);padding:18px 42px 18px 14px;gap:10px;min-height:155px}
+ .pool-row .pool-card>.avatar{width:34px;height:34px;font-size:12px}.pool-row .pool-body h3{font-size:14px}.pool-row .pool-body p{font-size:11px}
+ .pool-row .pool-score{grid-column:3;text-align:left;flex-direction:row;align-items:center;gap:8px}.pool-score>strong{font-size:23px}.pool-score>span{font-size:9px}
+ .pool-row .document-delete{top:12px;right:7px}.pool-rank{font-size:14px}.interview-list h4{font-size:13px}.deleted-list li{align-items:flex-start}
+}
+
+/* Hiring decisions have their own lifecycle; removal stays separate. */
+.sidebar nav .deleted-nav{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:0;background:none;color:#b7cdcc;font:inherit;font-size:13px;text-align:left;cursor:pointer;border-radius:10px}
+.sidebar nav .deleted-nav:hover{background:#2d5053;color:#fff}
+.brand-tagline{font-size:15px;color:#63726f;margin:8px 0 0}
+.vacancy-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.selected-people{margin:0 0 30px;padding:22px 24px;background:#f0f5ee;border:1px solid #dce7d6;border-radius:18px}
+.selected-people h2{font-size:18px}.selected-list{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.selected-person{padding:12px 16px;background:#fff;border-radius:12px;min-width:200px}
+.selected-person small{display:block;color:#6a7670;font-size:12px;margin-top:5px}
+.selection-label{display:inline-flex;border-radius:8px;padding:7px 10px;background:#e8f2df;color:#345640;font-size:12px;font-weight:600;white-space:nowrap}
+.selection-panel{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 22px;border:1px solid #d8e6d2;background:#f1f6ed;border-radius:14px;margin-bottom:22px}
+.selection-panel strong{color:#31533c}.selection-panel p{font-size:13px;line-height:1.55;color:#647267;margin:5px 0 0}.selection-actions{display:flex;gap:12px;align-items:center;flex-shrink:0}
+.comment-focus{padding:1px 4px;border-radius:4px;font-weight:600;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.comment-focus.minor{background:#f6edcf;color:#755217}.comment-focus.gap{background:#fae8e5;color:#9a4039}
+@media(max-width:1000px){.candidate-modal-header{flex-wrap:wrap}.candidate-modal-actions{margin-left:auto;flex-wrap:wrap}.selection-panel{flex-direction:column;align-items:flex-start}.selection-actions{flex-wrap:wrap}.vacancy-actions{justify-content:flex-start}}
+
+.export-options button{display:block;width:100%;border:0;background:none;text-align:left;padding:12px 15px;font:inherit;font-size:13px;color:#31536b;cursor:pointer}.export-options button:hover{background:#f1f5f7}

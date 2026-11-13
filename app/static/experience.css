@@ -1,0 +1,79 @@
+/* First acquaintance and one-time workspace entrance. No motion on routine filtering. */
+.boot{position:fixed;inset:0;z-index:100;background:#f5f7f9;transition:opacity .28s ease,visibility .28s}
+.boot.boot-leave{opacity:0;visibility:hidden;pointer-events:none}
+.onboarding{position:relative;z-index:50;transition:opacity .32s ease,transform .45s ease;background:#f9fafb;overflow:hidden}
+.onboarding.intro-leave{opacity:0;transform:translateY(-18px);pointer-events:none}
+.onboard-brand>span,.brand>span{font-weight:650;letter-spacing:1.1px}
+.onboard-brand>span{font-size:29px}.brand>span{font-size:25px}
+.onboard-form h2{font-size:32px;line-height:1.3;max-width:340px;margin-bottom:25px}
+.onboard-form form{margin-top:0}.onboard-form{width:100%}
+.onboard-copy>h1{font-size:43px}.onboard-art .studio-art{height:73%}
+.onboard-brand,.onboard-copy,.studio-art,.onboard-form>*{opacity:0}
+.intro-ready .onboard-brand{animation:kadr-reveal .7s .05s both}
+.intro-ready .onboard-copy{animation:kadr-reveal .9s .18s both}
+.intro-ready .studio-art{animation:kadr-art 1.35s .14s both}
+.intro-ready .onboard-form>*{animation:kadr-reveal .75s both}
+.intro-ready .onboard-form>.mini-spark{animation:kadr-symbol .95s .2s both}
+.intro-ready .onboard-form>.eyebrow{animation-delay:.3s}
+.intro-ready .onboard-form>h2{animation-delay:.4s}
+.intro-ready .onboard-form>form{animation-delay:.52s}
+.greeting{position:fixed;inset:0;z-index:45;min-height:100dvh;transition:opacity .5s ease,transform .5s ease;animation:appear .6s both}
+.greeting.greeting-leave{opacity:0;transform:scale(1.025);pointer-events:none}
+.greeting h1{font-size:42px;letter-spacing:-1.1px;animation:kadr-reveal .85s .13s both}
+.greeting>p{animation:kadr-reveal .7s .02s both}.greeting>span{animation:kadr-reveal .8s .25s both}
+.greeting-orbit{animation:kadr-symbol 1s cubic-bezier(.2,.8,.2,1) both}
+.greeting-orbit::after{animation:kadr-orbit 1.5s cubic-bezier(.2,.8,.2,1) both;transform-origin:-38px 44px}
+.sidebar nav{margin-top:38px}.sidebar-bottom{padding-top:24px}
+.topbar-actions{margin-left:auto}
+.opportunity-banner{display:flex;align-items:center;gap:17px;border:1px solid #d6e2e8;background:#edf3f6;border-radius:14px;padding:22px 25px;margin-top:25px}
+.opportunity-icon{width:43px;height:43px;border-radius:12px;background:#dce9eb;color:#2b5b65;display:grid;place-items:center;flex-shrink:0}
+.opportunity-banner h2{font-size:18px;letter-spacing:-.25px;color:#263b49;flex:1}
+.opportunity-banner .button{font-size:12px}
+.restart-intro{margin-top:18px;display:flex}
+.workspace-enter .sidebar{animation:kadr-sidebar .85s .08s both}
+.workspace-enter .topbar{animation:kadr-topbar .85s .2s both}
+.workspace-enter .page-heading{animation:kadr-reveal .85s .28s both}
+.workspace-enter .section-title{animation:kadr-reveal .8s .36s both}
+.workspace-enter .vacancy-card{animation:kadr-card .85s cubic-bezier(.2,.8,.2,1) both}
+.workspace-enter .vacancy-card:nth-child(3n+1){animation-delay:.43s}
+.workspace-enter .vacancy-card:nth-child(3n+2){animation-delay:.55s}
+.workspace-enter .vacancy-card:nth-child(3n){animation-delay:.67s}
+.workspace-enter .opportunity-banner{animation:kadr-reveal .8s .72s both}
+.workspace-enter .stats-row{animation:kadr-reveal .8s .83s both}
+@keyframes kadr-reveal{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes kadr-art{from{opacity:0;transform:translateY(48px) rotate(-5deg) scale(.96)}to{opacity:1;transform:translateY(0) rotate(0) scale(1)}}
+@keyframes kadr-symbol{from{opacity:0;transform:scale(.7) rotate(-22deg)}to{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes kadr-orbit{from{transform:rotate(-100deg)}to{transform:rotate(0)}}
+@keyframes kadr-sidebar{from{opacity:0;transform:translateX(-35px)}to{opacity:1;transform:translateX(0)}}
+@keyframes kadr-topbar{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes kadr-card{from{opacity:0;transform:translateY(35px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:950px){.brand>span{font-size:0}.sidebar nav{margin-top:20px}.onboard-form{padding:40px}.onboard-copy>h1{font-size:35px}}
+@media(max-width:680px){.onboard-form{padding:36px 27px}.onboard-form h2{font-size:29px}.onboard-copy>h1{font-size:29px}.onboard-brand>span{font-size:25px}.sidebar nav{margin-top:0}.opportunity-banner{flex-wrap:wrap;padding:18px;gap:12px}.opportunity-banner h2{font-size:16px}.opportunity-banner .button{width:100%}.greeting h1{font-size:31px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.onboard-brand,.onboard-copy,.studio-art,.onboard-form>*{opacity:1}}
+.brand,.onboard-brand{gap:0}
+.brand>img,.onboard-brand>img{width:27px;height:35px;object-fit:contain}
+.brand>span,.onboard-brand>span{font-size:32px;line-height:1;font-weight:600;letter-spacing:-1.1px;margin-left:1px}
+.chat-history{margin-top:35px;min-height:0;display:flex;flex-direction:column;flex:1;padding:0 3px 20px}
+.chat-history-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#b8cdd0;font-size:11px;margin:0 5px 10px}
+.chat-history-heading button{border:1px solid #47666b;border-radius:6px;background:transparent;color:#e6eff1;padding:5px 7px;display:flex;align-items:center;gap:4px;font-size:11px}
+.chat-history-heading .icon{width:13px;height:13px}
+.chat-history ul{padding:0;margin:0;list-style:none;overflow:auto;scrollbar-width:thin;scrollbar-color:#517479 transparent;min-height:0}
+.chat-history li{margin:2px 0}
+.chat-history li button{width:100%;display:flex;align-items:center;gap:8px;border:0;border-radius:7px;color:#c8d9dd;background:transparent;padding:9px 8px;text-align:left;font-size:12px;line-height:1.5}
+.chat-history li button>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chat-history li button .icon{width:15px;height:15px;flex-shrink:0}
+.chat-history li button:hover,.chat-history li button.active{color:#fff;background:#2c5358}
+.chat-history button:focus-visible{outline:2px solid #dff392;outline-offset:2px}
+.chat-titlebar h3{max-width:540px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sidebar-bottom{flex-shrink:0}
+@media(min-width:681px) and (max-width:950px){.brand>span{display:none}.brand>img{width:29px}.chat-history{padding:0;margin-top:22px}.chat-history-heading>span,.chat-history-heading button{font-size:0}.chat-history-heading button .icon{width:18px;height:18px}.chat-history li button>span{display:none}.chat-history li button{justify-content:center}.chat-history-heading{justify-content:center;margin:0 0 8px}}
+@media(max-width:680px){.chat-history{position:relative;flex:0;margin:0;padding:0}.chat-history-heading>span,.chat-history ul{display:none}.chat-history-heading{margin:0}.chat-history-heading button{font-size:10px;white-space:nowrap}.sidebar-bottom{padding:0}.chat-titlebar h3{max-width:230px;font-size:13px}}
+
+.history-toggle{display:none}
+@media(max-width:680px){.chat-history{display:none;position:fixed;left:12px;right:12px;bottom:80px;max-height:55dvh;margin:0;padding:16px;background:#143b3d;border:1px solid #517479;border-radius:12px;box-shadow:0 12px 40px #102e3850}.history-open .chat-history{display:flex}.chat-history-heading{margin-bottom:10px}.chat-history-heading>span{display:block}.chat-history ul{display:block}.chat-history-heading button{font-size:12px}.history-toggle{display:inline-flex}}
+
+.chat-history li button>.chat-title-window{display:block;min-width:0;flex:1;overflow:hidden;text-overflow:clip;white-space:nowrap}
+.chat-title-scroll{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chat-history li button.is-scrolling .chat-title-scroll{width:max-content;overflow:visible;text-overflow:clip;will-change:transform}
+
+@media(min-width:681px) and (max-width:950px){.chat-history li button>.chat-title-window{display:none}}

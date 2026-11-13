@@ -1,0 +1,15 @@
+.git
+.venv
+models
+__pycache__
+**/__pycache__
+.pytest_cache
+benchmarks
+tests
+*.zip
+.DS_Store
+
+data/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal

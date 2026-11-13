@@ -1,0 +1,21 @@
+{
+	log default {
+		format filter {
+			wrap json
+			request delete
+			resp_headers delete
+		}
+	}
+}
+
+{$KADR_DOMAIN} {
+	encode zstd gzip
+	request_body {
+		max_size 48MB
+	}
+	reverse_proxy app:8000 {
+		transport http {
+			read_timeout 300s
+		}
+	}
+}

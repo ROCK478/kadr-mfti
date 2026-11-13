@@ -1,0 +1,51 @@
+name: kadr-public
+services:
+  app:
+    build:
+      context: ..
+    image: kadr:server
+    restart: unless-stopped
+    environment:
+      BROWSER_WORKSPACE: "1"
+      ALLOWED_HOSTS: "${KADR_DOMAIN},localhost,127.0.0.1"
+      MODEL_PATH: /models/Qwen3-4B-Q4_K_M.gguf
+      SPEECH_MODEL_DIR: /models/speech
+      MODEL_THREADS: ${MODEL_THREADS:-4}
+      MODEL_TIMEOUT: ${MODEL_TIMEOUT:-240}
+      PORTAL_LLM_ROWS: "2"
+      BROWSER_SESSION_LIMIT: "12"
+      BROWSER_SESSION_TTL: "1800"
+    volumes:
+      - ../models:/models:ro
+    expose: ["8000"]
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m
+    mem_limit: 6g
+    memswap_limit: 6g
+    ulimits:
+      core: 0
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    stop_grace_period: 15s
+    command: ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers", "--forwarded-allow-ips", "*", "--no-access-log"]
+  web:
+    image: caddy:2.10.2-alpine@sha256:4c6e91c6ed0e2fa03efd5b44747b625fec79bc9cd06ac5235a779726618e530d
+    restart: unless-stopped
+    environment:
+      KADR_DOMAIN: ${KADR_DOMAIN:?Specify KADR_DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - certificates:/data
+      - caddy_config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+    security_opt: [no-new-privileges:true]
+volumes:
+  certificates:
+  caddy_config:

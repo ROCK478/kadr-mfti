@@ -1,0 +1,17 @@
+.chat-compose .chat-mic{background:#edf2f7;color:#334c60;border:1px solid #b5c5d2;flex-shrink:0}
+.chat-compose .chat-mic:hover:not(:disabled){background:#dee9f2}
+.chat-compose .chat-mic.recording{background:#a02f40;color:#fff;border-color:#a02f40}
+.record-stop{display:block;width:13px;height:13px;background:currentColor;border-radius:3px}
+.speech-controls{display:flex;align-items:center;gap:12px;min-height:32px;margin-top:5px}
+.speech-controls #speech-status{margin:0;flex:1;color:#495d6e;font-size:12px;line-height:1.6}
+.speech-controls #speech-status.speech-error{color:#a02f40}
+.chat-compose .record-cancel{background:transparent;color:#6b3542;font-size:12px;width:auto;height:auto;padding:6px;flex-shrink:0}
+.speech-controls [hidden],.answer-audio [hidden]{display:none!important}
+.answer-audio{display:flex;align-items:center;gap:12px;margin-top:12px}
+.answer-audio button{font:inherit;font-size:12px;font-weight:500;color:#294e6c;background:#f0f5fa;border:1px solid #bdcfdc;border-radius:7px;padding:6px 12px;min-height:36px}
+.answer-audio button:hover{background:#e2edf6}
+.answer-audio button[aria-pressed=true]{background:#dde9f3;color:#173c5a;border-color:#91acc3}
+.answer-audio button:focus-visible,.chat-mic:focus-visible{outline:2px solid #294e6c;outline-offset:3px}
+@media(max-width:680px){.speech-controls{align-items:flex-start}.speech-controls #speech-status{font-size:11px}.chat-compose-box{gap:6px}.chat-compose .chat-mic{width:36px}}
+
+.chat-compose .clear-context{background:#edf2f7;color:#3d5d73;border:1px solid #bdcbd6;width:28px;height:28px;font-size:18px}
